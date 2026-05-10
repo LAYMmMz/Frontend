@@ -1270,7 +1270,7 @@ function AutomatoDashboard({ onLogout }: AutomatoDashboardProps) {
         if (!selectedTemplate) {
           return (
             <motion.div key="selection" initial={reducedMotion ? {} : { opacity: 0 }} animate={reducedMotion ? {} : { opacity: 1 }} transition={reducedMotion ? { duration: 0 } : { duration: 0.4 }} className="flex flex-col items-center justify-center h-full px-10 pt-20 pb-10">
-              <WordsPullUp text="What template will you execute today?" className="text-4xl md:text-5xl font-bold tracking-tight text-white mb-12 text-center" showAsterisk />
+              <WordsPullUp text="What template will you use?" className="text-4xl md:text-5xl font-bold tracking-tight text-white mb-12 text-center" showAsterisk />
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl w-full" role="list">
                 {savedTemplates.map(template => (<TemplateCard key={template.id} template={template} onClick={setSelectedTemplate} />))}
                 <GlowCard onClick={() => { setActiveTab('create'); setHasScanned(false); setScanError(null); }} className="p-8 flex flex-col items-center justify-center min-h-[250px] border border-dashed border-white/20 hover:border-[#007AFF] group" ariaLabel="Create new template">
@@ -1371,7 +1371,7 @@ function AutomatoDashboard({ onLogout }: AutomatoDashboardProps) {
             <div className="max-w-4xl mx-auto px-8">
               <div className="mb-10 text-center">
                 <WordsPullUp text="New Template" className="text-4xl md:text-5xl font-bold text-white drop-shadow-lg" />
-                <p className="text-gray-400 mt-3 text-lg max-w-xl mx-auto">Break free from hardcoded apps. Upload screenshots and write plain-English rules to teach the Universal Interpreter.</p>
+                <p className="text-gray-400 mt-3 text-lg max-w-xl mx-auto">Break free from hardcoded apps. Upload screenshots and write sequential steps to teach Automato.</p>
               </div>
               
               <div className="bg-black/40 backdrop-blur-xl p-8 md:p-12 rounded-[2rem] border border-white/10 shadow-2xl space-y-10">
@@ -1482,7 +1482,7 @@ function AutomatoDashboard({ onLogout }: AutomatoDashboardProps) {
                           </div>
 
                           <div className="flex-1 flex flex-col">
-                            <label className="block text-[10px] font-bold text-gray-500 uppercase tracking-widest mb-2">Plain-English Rule</label>
+                            <label className="block text-[10px] font-bold text-gray-500 uppercase tracking-widest mb-2">Sequential Steps</label>
                             <textarea 
                               value={step.rule}
                               onChange={(e) => handleUpdateStepRule(step.id, e.target.value)}
@@ -1506,7 +1506,7 @@ function AutomatoDashboard({ onLogout }: AutomatoDashboardProps) {
                     className="w-full h-16 text-lg rounded-2xl shadow-[0_0_30px_rgba(0,122,255,0.3)] hover:shadow-[0_0_40px_rgba(0,122,255,0.5)]" 
                     disabled={!templateName.trim() || wizardSteps.some(s => !s.rule.trim())}
                   >
-                    <Check size={24} className="mr-2" /> Finish & Package JSON Payload
+                    <Check size={24} className="mr-2" /> Done
                   </Button>
                   <p className="text-center text-xs text-gray-500 mt-4">
                     This will POST your template to the Cloud Vault for execution.
